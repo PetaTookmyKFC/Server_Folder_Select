@@ -3,7 +3,6 @@ package serverfolderselect
 import (
 	"fmt"
 	"net/http"
-	"path/filepath"
 	"text/template"
 )
 
@@ -15,11 +14,11 @@ func SendFile(fileLoc string, w http.ResponseWriter, r *http.Request) {
 	// }
 
 	fileLoc = fmt.Sprintf("./Components/%s", fileLoc)
-	fileLoc, err := filepath.Abs(fileLoc)
-	if err != nil {
-		w.WriteHeader(500)
-		w.Write([]byte("NOT WORKING :SAD:"))
-	}
+	// fileLoc, err := filepath.Abs(fileLoc)
+	// if err != nil {
+	// 	w.WriteHeader(500)
+	// 	w.Write([]byte("NOT WORKING :SAD:"))
+	// }
 	temp, err := template.ParseFiles(fileLoc)
 	if err != nil {
 		w.WriteHeader(500)
